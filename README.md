@@ -1,6 +1,6 @@
-# Summer-UI
+# SummerUI
 ## 类似window窗口的弹窗和自定义的滑动条
-测试页面 https://642661520.github.io/Summer-UI/build/index
+测试页面 https://642661520.github.io/SummerUI/build/index
 ### 1.窗口
 ![Image text](./img/window.PNG)
 #### 1.1 功能

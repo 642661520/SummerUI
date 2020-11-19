@@ -3,9 +3,7 @@ import sui from './modules/sui';
 
 window.sui = sui;
 
-
 sui.suiscrollbarbody.open({background:undefined})
-
 sui.suiscrollbar.open({
   content: '.testscroll',
   // theme:'none'

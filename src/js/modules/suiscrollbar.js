@@ -8,25 +8,31 @@ const suiscrollbar = {
     theme = 'dark',
     axis = 'y',
   }) {
+    //#region content
     let name = content;
     if (content[0] == '.' || content[0] == '#') {
       name = content.substring(1);
     }
     const bordername = `.sui-scrollborder-${name} `;
+    //#endregion
 
+    //#region axis
     if (axis == 'y') {
       $(content).css({
-        'overflow-y': 'scroll',
+        'overflow-y': 'auto',
       });
     } else if (axis == 'x') {
       $(content).css({
-        'overflow-x': 'scroll',
+        'overflow-x': 'auto',
       });
     } else if (axis == 'xy' || axis == 'yx') {
       $(content).css({
-        overflow: 'scroll',
+        overflow: 'auto',
       });
     }
+
+    //#endregion
+
     $(content).wrap(`<div class="sui-scrollborder sui-scrollborder-${name}"></div>`);
     $(bordername).append(`<div class="sui-scrollbar">
             <div class="sui-scrollline"><div class="sui-scrollline-line"></div></div>
@@ -38,6 +44,7 @@ const suiscrollbar = {
 
     $(bordername).height($(content).height());
     $(bordername).width($(content).outerWidth());
+console.log($(content).innerHeight(),$(content).outerHeight(),$(content).prop("scrollHeight"));
 
     // #region 主题
     if (theme == 'dark') {
@@ -54,6 +61,13 @@ const suiscrollbar = {
       });
     }
     // #endregion
+
+    if($(content).innerHeight()===$(content).prop("scrollHeight")){
+      $(`${bordername}.sui-scrollbar`).css({
+        display:'none'
+      })
+      return
+    }
 
     const h = $(content).prop('scrollHeight') - $(content).prop('offsetHeight');
 
@@ -86,8 +100,8 @@ const suiscrollbar = {
           $(content).scrollTop(nowh);
         };
         document.onmouseup = function (event) {
-          if (event.pageX >= $(bordername).offset().left && event.pageX <= $(bordername).offset().left + $(bordername).outerWidth()
-                        && event.pageY >= $(bordername).offset().top && event.pageY <= $(bordername).offset().top + $(bordername).outerHeight()) {} else {
+          if (event.pageX >= $(bordername).offset().left && event.pageX <= $(bordername).offset().left + $(bordername).outerWidth() &&
+            event.pageY >= $(bordername).offset().top && event.pageY <= $(bordername).offset().top + $(bordername).outerHeight()) {} else {
             $(`${bordername}.sui-scrollbar`).stop().fadeOut(300);
           }
           $(bordername).on('mouseenter', () => {
@@ -148,7 +162,7 @@ const suiscrollbar = {
 
     $('body').on('click', `${bordername}.sui-scrollline`, function (event) {
       const b = event.clientY;
-      const top  = $(this).offset().top-$('html').scrollTop();
+      const top = $(this).offset().top - $('html').scrollTop();
       const x = (b - top) / ($(bordername).height() - $(`${bordername}.sui-scrollbox`).height());
       let xx = Math.abs(x - $(content).scrollTop() / h);
       if (xx >= 1) {

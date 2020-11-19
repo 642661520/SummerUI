@@ -1,0 +1,843 @@
+/*默认变量*/
+:root {
+    /*窗口默认宽度*/
+    --width: 500px;
+    /*窗口默认高度*/
+    --height: 300px;
+    /*窗口默认top*/
+    --top: 0;
+    /*窗口默认left*/
+    --left: 0;
+    /*标题栏高度*/
+    --titleheight: 30px;
+    /*窗口整体文字颜色*/
+    --fontcolor: rgb(255, 255, 255);
+    --color2: rgb(190, 190, 190);
+    /*窗口最小宽度*/
+    --minwidth: 200px;
+    /*动画时间*/
+    --animationtime: 0.3s;
+}
+
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*必须的包含块*/
+// .sui-win-out {
+
+//     width: 100%;
+//     height: 100%;
+//     color: rgb(255, 255, 255);
+
+
+
+
+.sui-suibox {
+    /*窗口*/
+    position: fixed;
+    // position: absolute;
+    // width: 0;
+    // height: 0;
+    // min-width: var(--minwidth);
+    // margin-left: 50px;
+    // min-height: var(--titleheight);
+    transition: all var(--animationtime);
+    // overflow: hidden;
+    background-color: #EEEEEE;
+    box-shadow: 0 0 10px 5px rgba(73, 73, 73, 0.1);
+
+    // .sui-suibox-content {
+
+    //         overflow: scroll
+
+
+    // }
+
+    // border-radius: 5px 5px 0 5px;
+
+    // .sui-suibox-stretch {
+    //     /*伸缩块*/
+    //     position: absolute;
+    //     right: 0;
+    //     bottom: 0;
+    //     width: 0;
+    //     height: 0;
+    //     border-color: transparent #00000025;
+    //     border-width: 10px 10px 0 0;
+    //     border-style: solid;
+    //     cursor: se-resize;
+
+    //     &:hover {
+    //         border-color: transparent #000000e1;
+    //     }
+    // }
+    .stretch {
+        /*伸缩块*/
+        position: absolute;
+        border-style: solid;
+        cursor: se-resize;
+        border-color: transparent;
+        border-color: transparent #00000017;
+        /* hsla(0, 0%, 0%, 0.145); */
+        width: 0;
+        height: 0;
+
+
+    }
+
+    .stretch-rb {
+        /*伸缩块*/
+        right: 0;
+        bottom: 0;
+        border-width: 10px 10px 0 0;
+    }
+
+    .stretch-lt {
+        /*伸缩块*/
+        left: 0;
+        top: 0;
+        border-width: 0 0 10px 10px;
+        border-style: solid;
+        /* cursor: sw-resize; */
+    }
+
+    .stretch-lb {
+        /*伸缩块*/
+        left: 0;
+        bottom: 0;
+        border-width: 10px 0 0 10px;
+        border-style: solid;
+        cursor: sw-resize;
+    }
+
+    .stretch-rt {
+        /*伸缩块*/
+        right: 0;
+        top: 0;
+        border-width: 0 10px 10px 0;
+        border-style: solid;
+        cursor: sw-resize;
+    }
+
+    .sui-suibox-content {
+        height: calc(100% - var(--titleheight));
+        position: relative;
+        overflow: hidden;
+        overflow: auto;
+
+        /*滑动条 */
+        &::-webkit-scrollbar {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            left: 10px;
+            border-radius: 15px;
+            background-color: #d6d5d5;
+        }
+
+        /*滑动条滑动块 */
+        &::-webkit-scrollbar-thumb {
+            background: rgb(255, 255, 255);
+            // height:20px;
+            // width:20px;
+            box-shadow: inset 0 0 11px #bac6d852;
+            border-radius: 10px 10px;
+        }
+
+        /*滑动条滑动块 */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #868686;
+        }
+    }
+
+
+
+
+    .sui-suibox-titlebar {
+        /*标题栏*/
+        position: relative;
+        cursor: default;
+        // user-select 控制用户能否选中文本
+        user-select: none;
+        background-color: #393D49;
+        color: #EEEEEE;
+
+        div {
+            /*标题栏下div*/
+            height: var(--titleheight);
+            width: var(--titleheight);
+            font-size: 15px;
+            line-height: var(--titleheight);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+
+            * {
+                transition: all var(--animationtime);
+            }
+
+            &:hover {
+                background-color: rgba(197, 197, 197, 0.5);
+            }
+        }
+
+
+        .sui-suibox-title {
+            /*标题*/
+            /*不换行*/
+            white-space: nowrap;
+            /*超出不可见*/
+            overflow: hidden;
+            /*超出显示...*/
+            text-overflow: ellipsis;
+            width: calc(100% - var(--titleheight)*4);
+            // width:100%;
+            text-align: left;
+            padding-left: 20px;
+            box-sizing: border-box;
+            // cursor: move;
+        }
+
+        .sui-title-nohover {
+            &:hover {
+                background-color: rgba(0, 0, 0, 0)
+            }
+        }
+
+        .sui-suibox-title0 {
+            width: calc(100% - var(--titleheight)*0);
+        }
+
+        .sui-suibox-title1 {
+            width: calc(100% - var(--titleheight)*1);
+        }
+
+        .sui-suibox-title2 {
+            width: calc(100% - var(--titleheight)*2);
+        }
+
+        .sui-suibox-title3 {
+            width: calc(100% - var(--titleheight)*3);
+        }
+
+        .sui-suibox-close {
+            /*关闭按钮*/
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            float: left;
+
+            &:hover {
+                background-color: red;
+            }
+
+            &:hover .close1,
+            &:hover .close2 {
+                background-color: rgb(255, 255, 255);
+            }
+
+            .close1 {
+                width: 14px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: absolute;
+                top: 15px;
+                left: 8px;
+                transform: rotateZ(45deg);
+                border-radius: 5px;
+            }
+
+            .close2 {
+                width: 14px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: absolute;
+                top: 15px;
+                left: 8px;
+                transform: rotateZ(-45deg);
+                border-radius: 5px;
+            }
+        }
+
+        .sui-suibox-close2 {
+            z-index: 1;
+            position: absolute;
+            float: right;
+            background-color: #EEEEEE;
+            border-radius: 50%;
+            top: -15px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+
+            &:hover {
+                background-color: #EEEEEE;
+
+            }
+
+            .close1 {
+                width: 24px;
+                height: 24px;
+                background-color: #393D49;
+                border-radius: 50%;
+                position: absolute;
+                font-size: 24px;
+                line-height: 20px;
+                left: 3px;
+                top: 3px;
+
+                &:hover {
+                    background-color: #0191ff;
+                }
+            }
+        }
+
+        .sui-suibox-max {
+            /*最大化按钮*/
+            position: absolute;
+            right: 30px;
+            top: 0;
+            float: left;
+
+            .max1 {
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+                border: 1px solid rgb(255, 255, 255);
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+
+            .max2 {
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+                border: 1px solid rgb(255, 255, 255);
+                position: absolute;
+                top: 10px;
+                left: 10px;
+
+            }
+
+            .max11 {
+                width: 8px;
+                height: 8px;
+                display: inline-block;
+                border: 1px solid rgb(255, 255, 255);
+                position: absolute;
+                top: 10px;
+                left: 12px;
+            }
+
+            .max12 {
+                width: 8px;
+                height: 8px;
+                display: inline-block;
+                border: 1px solid rgb(255, 255, 255);
+                position: absolute;
+                top: 13px;
+                left: 9px;
+            }
+        }
+
+
+        .sui-suibox-shrink {
+            /*收缩按钮*/
+            position: absolute;
+            right: 60px;
+            top: 0;
+
+            * {
+                transition: all var(--animationtime);
+            }
+
+            .shrink1 {
+                width: 10px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: relative;
+                top: -8px;
+                left: 3px;
+                transform: rotateZ(30deg);
+                border-radius: 5px;
+            }
+
+            .shrink11 {
+                top: 0px;
+            }
+
+            .shrink2 {
+                width: 10px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: relative;
+                top: -8px;
+                left: -3px;
+                transform: rotateZ(-30deg);
+                border-radius: 5px;
+            }
+
+            .shrink12 {
+                top: 0px;
+            }
+
+            .shrink3 {
+                width: 10px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: relative;
+                top: -29px;
+                left: 3px;
+                transform: rotateZ(-30deg);
+                border-radius: 5px;
+            }
+
+            .shrink13 {
+                top: -39px;
+            }
+
+            .shrink4 {
+                width: 10px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: relative;
+                top: -29px;
+                left: -3px;
+                transform: rotateZ(30deg);
+                border-radius: 5px;
+            }
+
+            .shrink14 {
+                top: -39px;
+            }
+        }
+
+
+        .sui-suibox-min {
+            /*最小化按钮*/
+            position: absolute;
+            right: 90px;
+            top: 0;
+
+            span {
+                width: 10px;
+                height: 1px;
+                display: inline-block;
+                background-color: rgb(255, 255, 255);
+                position: relative;
+                top: -4px;
+            }
+        }
+    }
+
+}
+
+.sui-max {
+    width: 100%;
+    height: 100%;
+}
+
+.sui-none {
+    display: none;
+}
+
+.transition {
+    /*消除动画延迟*/
+    transition: none;
+}
+
+
+
+
+
+
+.sui-lt {
+    top: 0;
+    left: 0;
+}
+
+
+
+.sui-rt {
+    top: 0;
+    // right: 0;
+}
+
+
+
+
+.sui-bg-red {
+    background-color: #FF5722;
+}
+
+.sui-bg-orange {
+    background-color: #FFB800;
+}
+
+.sui-bg-green {
+    background-color: #009688;
+}
+
+.sui-bg-blue {
+    background-color: #1E9FFF;
+}
+
+.sui-bg-black {
+    background-color: #393D49;
+}
+
+.sui-bg-gray {
+    background-color: #EEEEEE;
+}
+
+.sui-font-red {
+    color: red;
+}
+
+.sui-font-yellow {
+    color: rgb(255, 230, 0);
+}
+
+.sui-font-green {
+    color: green;
+}
+
+.sui-font-blue {
+    color: #0b0d81;
+}
+
+.sui-font-black {
+    color: #000000;
+}
+
+.sui-font-white {
+    color: white;
+}
+
+.min-click {
+    /*最小化状态*/
+    width: 200px;
+    height: var(--titleheight);
+    left: 0px;
+}
+
+
+.sui-btns {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    overflow: hidden;
+}
+
+.sui-btn {
+    padding: 20px auto 20px 0;
+    margin: 0;
+    // padding: 0;
+    border: 1px solid transparent; //自定义边框
+    outline: none; //消除默认点击蓝色边框效果
+    width: auto;
+    border-radius: 4px;
+    // display: inline-block;
+    // max-width: 100px;
+    height: 30px;
+
+    line-height: 30px;
+    color: rgb(255, 255, 255);
+    background-color: #1E9FFF;
+
+    &:hover {
+        background-color: rgb(39, 144, 224);
+
+        &:active {
+            background-color: #1E9FFF;
+
+        }
+    }
+}
+
+.sui-anim4 {
+    animation: anim4 300ms;
+}
+
+.sui-anim4-2 {
+    animation: anim42 300ms;
+}
+
+.sui-anim6 {
+    animation: anim6 300ms;
+}
+
+@keyframes anim4 {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(720deg);
+    }
+}
+
+@keyframes anim42 {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(-720deg);
+    }
+}
+
+@keyframes anim6 {
+    from {
+        margin-left: 0;
+    }
+
+    21%,
+    49%,
+    77% {
+        margin-left: -10px;
+    }
+
+    7%,
+    35%,
+    63%,
+    91% {
+        margin-left: 10px;
+    }
+
+    to {
+        margin-left: 0;
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+.sui-scrollborder {
+    user-select: none;
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sui-scrollbar {
+        // margin-right: 10px;
+        position: absolute;
+        width: 20px;
+        height: calc(100% - 40px);
+        right: 0px;
+        top: 20px;
+        // display: none;
+    }
+
+    .sui-scrollline {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .sui-scrollline-line {
+            margin: auto;
+            width: 2px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+    }
+
+
+    .sui-scrollbox {
+
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        top: 0px;
+
+        .sui-scrollbox-box {
+            width: 4px;
+            height: 100%;
+            margin: auto;
+            background-color: rgb(33, 33, 33);
+            opacity: 0.75;
+            border-radius: 5px;
+        }
+
+        &:hover .sui-scrollbox-box {
+            opacity: 1;
+        }
+    }
+
+    .sui-scrollup,
+    .sui-scrolldown {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        border-radius: 50%;
+        font-weight: 900;
+        font-size: 12px;
+        color: rgb(51, 51, 51);
+        text-align: center;
+        line-height: 12px;
+        opacity: 0.4;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .sui-scrollup {
+        top: -15px;
+        left: 4px;
+
+    }
+
+    .sui-scrolldown {
+        bottom: -15px;
+        left: 4px;
+    }
+
+}

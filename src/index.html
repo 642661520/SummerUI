@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        width: 2000px;
+        height: 1120px;
+        /* background-color: #013; */
+    }
+    .testscroll{
+        width: 320px;
+        height: 400px;
+        background-color: aqua;
+        /* overflow-y: scroll; */
+    }
+    .test {
+        width: 400px;
+        height: 400px;
+        background-color: rgb(168, 86, 86);
+        font-size: 20px;
+        color: rgb(47, 84, 165);
+        display: none;
+    }
+
+
+
+    .btn {
+        position: fixed;
+        top:600px;
+    }
+
+    
+</style>
+
+<body>
+   
+    <div class="testscroll">
+        if (document.body.scrollHeight <= window.innerHeight) {
+            $(content+' .sui-scrollbar').css({
+                display:'none'
+            })
+            }else{
+                $(content+' .sui-scrollbar').css({
+                    display:''
+                })
+            }
+            if (document.body.scrollWidth <= window.innerWidth) {
+                $(content+' .sui-scrollbar-x').css({
+                    display:'none'
+                })
+            }else{
+                $(content+' .sui-scrollbar-x').css({
+                    display:''
+                })
+            }
+        if (document.body.scrollHeight <= window.innerHeight) {
+        $(content+' .sui-scrollbar').css({
+            display:'none'
+        })
+        }else{
+            $(content+' .sui-scrollbar').css({
+                display:''
+            })
+        }
+        if (document.body.scrollWidth <= window.innerWidth) {
+            $(content+' .sui-scrollbar-x').css({
+                display:'none'
+            })
+        }else{
+            $(content+' .sui-scrollbar-x').css({
+                display:''
+            })
+            if (document.body.scrollHeight <= window.innerHeight) {
+                $(content+' .sui-scrollbar').css({
+                    display:'none'
+                })
+                }else{
+                    $(content+' .sui-scrollbar').css({
+                        display:''
+                    })
+                }
+                if (document.body.scrollWidth <= window.innerWidth) {
+                    $(content+' .sui-scrollbar-x').css({
+                        display:'none'
+                    })
+                }else{
+                    $(content+' .sui-scrollbar-x').css({
+                        display:''
+                    })
+                }
+            if (document.body.scrollHeight <= window.innerHeight) {
+            $(content+' .sui-scrollbar').css({
+                display:'none'
+            })
+            }else{
+                $(content+' .sui-scrollbar').css({
+                    display:''
+                })
+            }
+            if (document.body.scrollWidth <= window.innerWidth) {
+                $(content+' .sui-scrollbar-x').css({
+                    display:'none'
+                })
+            }else{
+                $(content+' .sui-scrollbar-x').css({
+                    display:''
+                })
+                if (document.body.scrollHeight <= window.innerHeight) {
+                    $(content+' .sui-scrollbar').css({
+                        display:'none'
+                    })
+                    }else{
+                        $(content+' .sui-scrollbar').css({
+                            display:''
+                        })
+                    }
+                    if (document.body.scrollWidth <= window.innerWidth) {
+                        $(content+' .sui-scrollbar-x').css({
+                            display:'none'
+                        })
+                    }else{
+                        $(content+' .sui-scrollbar-x').css({
+                            display:''
+                        })
+                    }
+                if (document.body.scrollHeight <= window.innerHeight) {
+                $(content+' .sui-scrollbar').css({
+                    display:'none'
+                })
+                }else{
+                    $(content+' .sui-scrollbar').css({
+                        display:''
+                    })
+                }
+                if (document.body.scrollWidth <= window.innerWidth) {
+                    $(content+' .sui-scrollbar-x').css({
+                        display:'none'
+                    })
+                }else{
+                    $(content+' .sui-scrollbar-x').css({
+                        display:''
+                    })
+                    if (document.body.scrollHeight <= window.innerHeight) {
+                        $(content+' .sui-scrollbar').css({
+                            display:'none'
+                        })
+                        }else{
+                            $(content+' .sui-scrollbar').css({
+                                display:''
+                            })
+                        }
+                        if (document.body.scrollWidth <= window.innerWidth) {
+                            $(content+' .sui-scrollbar-x').css({
+                                display:'none'
+                            })
+                        }else{
+                            $(content+' .sui-scrollbar-x').css({
+                                display:''
+                            })
+                        }
+                    if (document.body.scrollHeight <= window.innerHeight) {
+                    $(content+' .sui-scrollbar').css({
+                        display:'none'
+                    })
+                    }else{
+                        $(content+' .sui-scrollbar').css({
+                            display:''
+                        })
+                    }
+                    if (document.body.scrollWidth <= window.innerWidth) {
+                        $(content+' .sui-scrollbar-x').css({
+                            display:'none'
+                        })
+                    }else{
+                        $(content+' .sui-scrollbar-x').css({
+                            display:''
+                        })
+        }</div>
+    <div class="btn">
+        <button id="btn" class='sui-btn'>btn</button>
+    <button id="btn2" class='sui-btn'>btn2</button>
+    <button id="btn3" class='sui-btn'>btn3</button>
+    <button id="btn4" class='sui-btn'>btn4</button>
+    <button id="btn5" class='sui-btn'>btn5</button>
+    <button id="btn6" class='sui-btn'>btn6</button>
+    <button id="btn7" class='sui-btn'>btn7</button>
+    </div>
+    
+    <div id="b" class="test">
+        
+    </div>
+
+    <div class="test1  tx">test11111111</div>
+    <div class="test2  tx">test2222</div>
+    <div class="test3  tx">test2222</div>
+    <div class="boxt"></div>
+
+    <script>
+        
+        document.ondragstart = function () {
+            return false;
+        };
+    </script>
+</body>
+
+</html>
